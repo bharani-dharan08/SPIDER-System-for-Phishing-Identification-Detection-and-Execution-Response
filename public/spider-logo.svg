@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Neon Green Glow Filters -->
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur1" />
+      <feGaussianBlur stdDeviation="15" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Metallic & Neon Gradients -->
+    <linearGradient id="cyber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <linearGradient id="leg-grad-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a7f3d0" />
+      <stop offset="60%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+
+    <linearGradient id="leg-grad-right" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a7f3d0" />
+      <stop offset="60%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .bg-dark { fill: #0a0a0a; }
+    .trace-line { stroke: #10b981; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; filter: url(#soft-glow); }
+    .trace-outer { stroke: #a7f3d0; stroke-width: 1.5; fill: none; stroke-linecap: round; filter: url(#neon-glow); }
+    .node-point { fill: #34d399; filter: url(#neon-glow); }
+    .core-node { fill: #6ee7b7; filter: url(#neon-glow); }
+    .binary-text { fill: #10b981; font-family: 'JetBrains Mono', monospace; font-size: 8px; opacity: 0.75; letter-spacing: 1px; }
+  </style>
+
+  <!-- Background -->
+  <rect width="500" height="500" class="bg-dark" rx="30" />
+
+  <!-- CENTRAL SPIDER BODY & CIRCUIT CORE -->
+  <g id="spider-body" filter="url(#soft-glow)">
+    <!-- Abdomen -->
+    <path d="M250 200 C220 220, 220 290, 250 320 C280 290, 280 220, 250 200 Z" fill="#064e3b" stroke="#34d399" stroke-width="2" />
+    <path d="M250 215 C230 230, 230 280, 250 305 C270 280, 270 230, 250 215 Z" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,3" />
+
+    <!-- Cephalothorax (Head/Chest) -->
+    <path d="M250 150 C230 165, 230 195, 250 205 C270 195, 270 165, 250 150 Z" fill="#047857" stroke="#6ee7b7" stroke-width="2" />
+
+    <!-- Fangs / Mandibles -->
+    <path d="M242 150 L235 132 L245 142 Z" fill="#34d399" />
+    <path d="M258 150 L265 132 L255 142 Z" fill="#34d399" />
+
+    <!-- Center Core Target Rings -->
+    <circle cx="250" cy="180" r="10" fill="none" stroke="#6ee7b7" stroke-width="2" filter="url(#neon-glow)" />
+    <circle cx="250" cy="180" r="4" class="core-node" />
+    <circle cx="250" cy="260" r="6" class="node-point" />
+  </g>
+
+  <!-- SPIDER LEGS - LEFT SIDE -->
+  <g id="legs-left">
+    <!-- Leg L1 (Top Left Curved Fang Leg) -->
+    <path d="M245 160 L180 120 L140 50 L105 170" class="trace-outer" stroke="url(#leg-grad-left)" stroke-width="3" />
+    <path d="M180 120 L135 180" class="trace-line" />
+
+    <!-- Leg L2 (Upper Mid Left) -->
+    <path d="M240 175 L150 150 L80 130 L70 250" class="trace-outer" stroke="url(#leg-grad-left)" stroke-width="3" />
+    <path d="M150 150 L90 230" class="trace-line" />
+
+    <!-- Leg L3 (Lower Mid Left) -->
+    <path d="M240 190 L140 210 L75 270 L145 370" class="trace-outer" stroke="url(#leg-grad-left)" stroke-width="3" />
+    <path d="M140 210 L85 330" class="trace-line" />
+
+    <!-- Leg L4 (Bottom Left Spear Leg) -->
+    <path d="M245 220 L160 260 L180 380 L220 460" class="trace-outer" stroke="url(#leg-grad-left)" stroke-width="3.5" />
+    <path d="M160 260 L200 420" class="trace-line" />
+  </g>
+
+  <!-- SPIDER LEGS - RIGHT SIDE (SYMMETRICAL MIRROR) -->
+  <g id="legs-right">
+    <!-- Leg R1 (Top Right Curved Fang Leg) -->
+    <path d="M255 160 L320 120 L360 50 L395 170" class="trace-outer" stroke="url(#leg-grad-right)" stroke-width="3" />
+    <path d="M320 120 L365 180" class="trace-line" />
+
+    <!-- Leg R2 (Upper Mid Right) -->
+    <path d="M260 175 L350 150 L420 130 L430 250" class="trace-outer" stroke="url(#leg-grad-right)" stroke-width="3" />
+    <path d="M350 150 L410 230" class="trace-line" />
+
+    <!-- Leg R3 (Lower Mid Right) -->
+    <path d="M260 190 L360 210 L425 270 L355 370" class="trace-outer" stroke="url(#leg-grad-right)" stroke-width="3" />
+    <path d="M360 210 L415 330" class="trace-line" />
+
+    <!-- Leg R4 (Bottom Right Spear Leg) -->
+    <path d="M255 220 L340 260 L320 380 L280 460" class="trace-outer" stroke="url(#leg-grad-right)" stroke-width="3.5" />
+    <path d="M340 260 L300 420" class="trace-line" />
+  </g>
+
+  <!-- GLOWING CIRCUIT NODES (JOINTS) -->
+  <g id="nodes">
+    <!-- Left Joint Nodes -->
+    <circle cx="140" cy="50" r="5" class="node-point" />
+    <circle cx="180" cy="120" r="6" class="node-point" />
+    <circle cx="105" cy="170" r="5" class="node-point" />
+    <circle cx="80" cy="130" r="5" class="node-point" />
+    <circle cx="70" cy="250" r="5" class="node-point" />
+    <circle cx="140" cy="210" r="6" class="node-point" />
+    <circle cx="75" cy="270" r="5" class="node-point" />
+    <circle cx="145" cy="370" r="5" class="node-point" />
+    <circle cx="160" cy="260" r="6" class="node-point" />
+    <circle cx="180" cy="380" r="5" class="node-point" />
+    <circle cx="220" cy="460" r="6" class="core-node" />
+
+    <!-- Right Joint Nodes -->
+    <circle cx="360" cy="50" r="5" class="node-point" />
+    <circle cx="320" cy="120" r="6" class="node-point" />
+    <circle cx="395" cy="170" r="5" class="node-point" />
+    <circle cx="420" cy="130" r="5" class="node-point" />
+    <circle cx="430" cy="250" r="5" class="node-point" />
+    <circle cx="360" cy="210" r="6" class="node-point" />
+    <circle cx="425" cy="270" r="5" class="node-point" />
+    <circle cx="355" cy="370" r="5" class="node-point" />
+    <circle cx="340" cy="260" r="6" class="node-point" />
+    <circle cx="320" cy="380" r="5" class="node-point" />
+    <circle cx="280" cy="460" r="6" class="core-node" />
+  </g>
+
+  <!-- MATRIX BINARY OVERLAYS ALONG LEGS -->
+  <g id="binary-code">
+    <text x="110" y="100" class="binary-text" transform="rotate(-50 110 100)">01101</text>
+    <text x="370" y="100" class="binary-text" transform="rotate(50 370 100)">10010</text>
+    <text x="90" y="200" class="binary-text" transform="rotate(75 90 200)">1101</text>
+    <text x="395" y="200" class="binary-text" transform="rotate(-75 395 200)">0110</text>
+    <text x="195" y="420" class="binary-text" transform="rotate(65 195 420)">1010101</text>
+    <text x="285" y="420" class="binary-text" transform="rotate(-65 285 420)">0101010</text>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+{
+  "name": "SPIDER - System for Phishing Identification, Detection, and Execution Response",
+  "description": "SPIDER is an enterprise-grade multimodal threat intelligence platform analyzing audio, visual/QR, email/DOM, and text payloads against advanced threat vectors (BEC, Quishing, Vishing, Consent Phishing, AiTM Proxy) with indirect prompt injection defenses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
